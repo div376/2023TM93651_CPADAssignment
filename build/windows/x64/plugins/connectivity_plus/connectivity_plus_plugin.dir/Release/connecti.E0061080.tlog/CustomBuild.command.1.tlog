@@ -1,0 +1,10 @@
+^D:\2023MT93260_CPADASSIGNMENT\WINDOWS\FLUTTER\EPHEMERAL\.PLUGIN_SYMLINKS\CONNECTIVITY_PLUS\WINDOWS\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/2023MT93260_CPADAssignment/windows -BD:/2023MT93260_CPADAssignment/build/windows/x64 --check-stamp-file D:/2023MT93260_CPADAssignment/build/windows/x64/plugins/connectivity_plus/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
