@@ -1,243 +1,3 @@
-// // import 'package:flutter/material.dart';
-// // import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
-
-// // void main() async {
-// //   WidgetsFlutterBinding.ensureInitialized();
-
-// //   // Fetch the environment variables from the .env file
-// //   const keyApplicationId = 'LpIZBjMOk6FTA1Khuu4zQUKURhmQBtJ4NMW4KYel';
-// //   const keyClientKey = 'KXXmZMt3oY4HZSAK9cK5x5qhrYDeKEntOlTZ4qXP';
-// //   const keyParseServerUrl = 'https://parseapi.back4app.com';
-
-// //   await Parse().initialize(keyApplicationId, keyParseServerUrl,
-// //       clientKey: keyClientKey, debug: true);
-
-// //   runApp(const LoginPage());
-// // }
-
-// // class LoginPage extends StatefulWidget {
-// //   const LoginPage({Key? key}) : super(key: key);
-
-// //   @override
-// //   _LoginPageState createState() => _LoginPageState();
-// // }
-
-// // class _LoginPageState extends State<LoginPage> {
-// //   final controllerUsername = TextEditingController();
-// //   final controllerPassword = TextEditingController();
-
-// //   bool isLoggedIn = false;
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       appBar: AppBar(
-// //         title: const Text('Login Page'),
-// //       ),
-// //       body: Center(
-// //         child: SingleChildScrollView(
-// //           padding: const EdgeInsets.all(16),
-// //           child: Column(
-// //             crossAxisAlignment: CrossAxisAlignment.stretch,
-// //             children: [
-// //               Container(
-// //                 height: 200,
-// //                 child: Image.network(
-// //                   'https://blog.back4app.com/wp-content/uploads/2017/11/logo-b4a-1-768x175-1.png',
-// //                 ),
-// //               ),
-// //               const SizedBox(height: 16),
-// //               const Text(
-// //                 'Login to your account',
-// //                 textAlign: TextAlign.center,
-// //                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-// //               ),
-// //               const SizedBox(height: 16),
-// //               TextField(
-// //                 controller: controllerUsername,
-// //                 keyboardType: TextInputType.text,
-// //                 decoration: const InputDecoration(
-// //                   border: OutlineInputBorder(),
-// //                   labelText: 'Username',
-// //                 ),
-// //               ),
-// //               const SizedBox(height: 8),
-// //               TextField(
-// //                 controller: controllerPassword,
-// //                 obscureText: true,
-// //                 decoration: const InputDecoration(
-// //                   border: OutlineInputBorder(),
-// //                   labelText: 'Password',
-// //                 ),
-// //               ),
-// //               const SizedBox(height: 16),
-// //               ElevatedButton(
-// //                 onPressed: () => doUserLogin(context),
-// //                 child: const Text('Login'),
-// //               ),
-// //               const SizedBox(height: 16),
-// //               TextButton(
-// //                 onPressed: () {
-// //                   Navigator.pushNamed(context, '/signup');
-// //                 },
-// //                 child: const Text('Don\'t have an account? Sign Up'),
-// //               ),
-// //             ],
-// //           ),
-// //         ),
-// //       ),
-// //     );
-// //   }
-
-// //   void showError(String message) {
-// //     showDialog(
-// //       context: context,
-// //       builder: (context) => AlertDialog(
-// //         title: const Text('Error'),
-// //         content: Text(message),
-// //         actions: [
-// //           TextButton(
-// //             onPressed: () => Navigator.pop(context),
-// //             child: const Text('OK'),
-// //           ),
-// //         ],
-// //       ),
-// //     );
-// //   }
-
-// //   void doUserLogin(BuildContext context) async {
-// //     final username = controllerUsername.text.trim();
-// //     final password = controllerPassword.text.trim();
-
-// //     if (username.isEmpty || password.isEmpty) {
-// //       showError('Please fill in all fields.');
-// //       return;
-// //     }
-// //     final user;
-
-// //     user = ParseUser(username, password, null);
-// //     final response = await user.login();
-
-// //     if (response.success) {
-// //       Navigator.pushNamed(context, '/tasks');
-// //     } else {
-// //       showError(response.error?.message ?? 'An error occurred.');
-// //     }
-// //   }
-// // }
-
-
-// import 'package:flutter/material.dart';
-// import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
-
-// class LoginPage extends StatefulWidget {
-//   const LoginPage({Key? key}) : super(key: key);
-
-//   @override
-//   _LoginPageState createState() => _LoginPageState();
-// }
-
-// class _LoginPageState extends State<LoginPage> {
-//   final controllerUsername = TextEditingController();
-//   final controllerPassword = TextEditingController();
-
-//   void showError(String message) {
-//     showDialog(
-//       context: context,
-//       builder: (context) => AlertDialog(
-//         title: const Text('Error'),
-//         content: Text(message),
-//         actions: [
-//           TextButton(
-//             onPressed: () => Navigator.pop(context),
-//             child: const Text('OK'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   void doUserLogin(BuildContext context) async {
-//     final username = controllerUsername.text.trim();
-//     final password = controllerPassword.text.trim();
-
-//     if (username.isEmpty || password.isEmpty) {
-//       showError('Please fill in all fields.');
-//       return;
-//     }
-
-//     final user = ParseUser(username, password, null);
-//     final response = await user.login();
-
-//     if (response.success) {
-//       Navigator.pushReplacementNamed(context, '/home');
-//     } else {
-//       showError(response.error?.message ?? 'An error occurred.');
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Login Page'),
-//       ),
-//       body: Center(
-//         child: SingleChildScrollView(
-//           padding: const EdgeInsets.all(16),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.stretch,
-//             children: [
-//               Container(
-//                 height: 200,
-//                 child: Image.network(
-//                   'https://blog.back4app.com/wp-content/uploads/2017/11/logo-b4a-1-768x175-1.png',
-//                 ),
-//               ),
-//               const SizedBox(height: 16),
-//               const Text(
-//                 'Login to your account',
-//                 textAlign: TextAlign.center,
-//                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-//               ),
-//               const SizedBox(height: 16),
-//               TextField(
-//                 controller: controllerUsername,
-//                 keyboardType: TextInputType.text,
-//                 decoration: const InputDecoration(
-//                   border: OutlineInputBorder(),
-//                   labelText: 'Username',
-//                 ),
-//               ),
-//               const SizedBox(height: 8),
-//               TextField(
-//                 controller: controllerPassword,
-//                 obscureText: true,
-//                 decoration: const InputDecoration(
-//                   border: OutlineInputBorder(),
-//                   labelText: 'Password',
-//                 ),
-//               ),
-//               const SizedBox(height: 16),
-//               ElevatedButton(
-//                 onPressed: () => doUserLogin(context),
-//                 child: const Text('Login'),
-//               ),
-//               const SizedBox(height: 16),
-//               TextButton(
-//                 onPressed: () {
-//                   Navigator.pushNamed(context, '/signup');
-//                 },
-//                 child: const Text('Don\'t have an account? Sign Up'),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
@@ -249,31 +9,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controllerUsername = TextEditingController();
-  final controllerPassword = TextEditingController();
+  final TextEditingController _usernameCtrl = TextEditingController();
+  final TextEditingController _passwordCtrl = TextEditingController();
 
-  void showError(String message) {
+  void _showMessage(String title, String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Error'),
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: Text(title, style: const TextStyle(color: Colors.redAccent)),
         content: Text(message),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("OK")),
         ],
       ),
     );
   }
 
-  void doUserLogin(BuildContext context) async {
-    final username = controllerUsername.text.trim();
-    final password = controllerPassword.text.trim();
+  Future<void> _doLogin() async {
+    final username = _usernameCtrl.text.trim();
+    final password = _passwordCtrl.text.trim();
 
     if (username.isEmpty || password.isEmpty) {
-      showError('Please fill in all fields.');
+      _showMessage("Missing Info", "Please fill in all fields.");
       return;
     }
 
@@ -283,78 +41,85 @@ class _LoginPageState extends State<LoginPage> {
     if (response.success) {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
-      showError(response.error?.message ?? 'An error occurred.');
+      _showMessage("Login Failed", response.error?.message ?? "Something went wrong.");
     }
+  }
+
+  Future<void> _resetPassword() async {
+    final email = _usernameCtrl.text.trim();
+
+    if (email.isEmpty) {
+      _showMessage("Missing Email", "Please enter your email address.");
+      return;
+    }
+
+    final user = ParseUser(null, null, email);  // Only email required for reset
+    final response = await user.requestPasswordReset();
+
+    if (response.success) {
+      _showMessage("Password Reset", "A password reset link has been sent to your email.");
+    } else {
+      _showMessage("Error", response.error?.message ?? "Failed to send password reset email.");
+    }
+  }
+
+  Widget _inputField(TextEditingController controller, String label, IconData icon, {bool isPassword = false}) {
+    return TextField(
+      controller: controller,
+      obscureText: isPassword,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: label,
+        prefixIcon: Icon(icon),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        title: const Text("Welcome Back"),
         backgroundColor: Colors.blueAccent,
-        title: const Text('Login'),
+        centerTitle: true,
+        elevation: 0,
       ),
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(24),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage('https://blog.back4app.com/wp-content/uploads/2017/11/logo-b4a-1-768x175-1.png'),
-                    fit: BoxFit.contain,
-                  ),
-                ),
+              Image.network(
+                'https://blog.back4app.com/wp-content/uploads/2017/11/logo-b4a-1-768x175-1.png',
+                height: 120,
               ),
               const SizedBox(height: 32),
-              const Text(
-                'Login to your account',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-              ),
+              _inputField(_usernameCtrl, "Username or Email", Icons.person),
               const SizedBox(height: 16),
-              TextField(
-                controller: controllerUsername,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                  labelText: 'Username',
-                  prefixIcon: Icon(Icons.person),
-                ),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: controllerPassword,
-                obscureText: true,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
-                ),
-              ),
+              _inputField(_passwordCtrl, "Password", Icons.lock, isPassword: true),
               const SizedBox(height: 24),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                  onPressed: _doLogin,
+                  child: const Text("Login", style: TextStyle(fontSize: 18)),
                 ),
-                onPressed: () => doUserLogin(context),
-                child: const Text('Login', style: TextStyle(fontSize: 18)),
               ),
-              const SizedBox(height: 16),
               TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
-                },
-                child: const Text('Don\'t have an account? Sign Up'),
+                onPressed: () => Navigator.pushNamed(context, '/signup'),
+                child: const Text("Don't have an account? Sign Up"),
+              ),
+              TextButton(
+                onPressed: _resetPassword,
+                child: const Text("Forgot Password?"),
               ),
             ],
           ),
