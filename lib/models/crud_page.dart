@@ -105,7 +105,10 @@ class _CRUDPageState extends State<CRUDPage> {
 
     if (confirm == true) {
       final response = await obj.delete();
-      if (response.success) fetchRecords();
+      if (response.success) 
+       setState(() {
+      fetchRecords();
+       });
     }
   }
 

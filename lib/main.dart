@@ -9,9 +9,9 @@ void main() async {
 
   // Initialize the Parse Server
   await Parse().initialize(
-    'U5ulL17glnSyP2yT8Em2TJFpnNSD7X0wiiLqz7XH',  // Application ID
+    '2jeVwknXOLQSuRUwc4i9aUCDhOlnbWHeBQOFVUfm',  // Application ID
     'https://parseapi.back4app.com',  // Parse Server URL
-    clientKey: 'DVFSeRyveqp0uffRe8yporCm8ipIbPlqkg5Ja8K1',  // Client Key
+    clientKey: '47K88Wb5sqXJqbpIpbrnX1J7OOcKNeR4KpeENdcm',  // Client Key
     autoSendSessionId: true,
     debug: true,
   );

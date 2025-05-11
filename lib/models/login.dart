@@ -12,6 +12,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameCtrl = TextEditingController();
   final TextEditingController _passwordCtrl = TextEditingController();
 
+  bool _isPasswordVisible = false; // For toggling password visibility
+
   void _showMessage(String title, String message) {
     showDialog(
       context: context,
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    final user = ParseUser(null, null, email);  // Only email required for reset
+    final user = ParseUser(null, null, email);
     final response = await user.requestPasswordReset();
 
     if (response.success) {
@@ -66,12 +68,24 @@ class _LoginPageState extends State<LoginPage> {
   Widget _inputField(TextEditingController controller, String label, IconData icon, {bool isPassword = false}) {
     return TextField(
       controller: controller,
-      obscureText: isPassword,
+      obscureText: isPassword && !_isPasswordVisible,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
         labelText: label,
         prefixIcon: Icon(icon),
+        suffixIcon: isPassword
+            ? IconButton(
+                icon: Icon(
+                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
+              )
+            : null,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
